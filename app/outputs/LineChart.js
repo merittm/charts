@@ -13,6 +13,7 @@ module.exports = async function LineChart(records) {
 
     const background_color = '#FFF';
     const label_color = '#dadada';
+    const v_axis_label_color = '#74ea87';
     const h_axis_label_color = '#000';
     const line_color = 'lightblue';
     const positive_trend_color = 'lightgreen';
@@ -197,7 +198,19 @@ module.exports = async function LineChart(records) {
     context.fillStyle = label_color;
     context.fillText(heading, width / 2, heading_y);
 
-    drawAxes(canvas, { axis: 'both', ticks: 'v', labels: 'v', y_axis_max_amount, step_x, step_y, data_area_width, data_area_height, margin, dbl_margin });
+    drawAxes(canvas,
+        {
+            axis: 'both',
+            ticks: 'v',
+            axis_label_color: v_axis_label_color,
+            labels: 'v',
+            y_axis_max_amount,
+            step_x, step_y,
+            data_area_width,
+            data_area_height,
+            margin,
+            dbl_margin
+        });
 
     const buffer = canvas.toBuffer('image/png')
     fs.writeFileSync(__dirname + '/linechart.png', buffer)
