@@ -24,6 +24,7 @@ module.exports = function drawAxes(
         labels = 'both',
         y_axis_max_amount,
         axis_color = 'black',
+        axis_label_color = 'black',
         tick_color = 'black',
         step_x = 50,
         step_y = 50,
@@ -140,7 +141,7 @@ module.exports = function drawAxes(
         let value_segment = Math.ceil(y_axis_max_amount / vertical_ticks);
         for (let i = 1, val = value_segment; i <= vertical_ticks; val += value_segment, ++i) {
             context.font = '16pt Arial';
-            context.fillStyle = axis_color;
+            context.fillStyle = axis_label_color;
             context.fillText(
                 val,
                 margin,

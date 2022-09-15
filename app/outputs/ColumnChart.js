@@ -5,14 +5,22 @@ const drawAxes = require('./drawModules/drawAxes');
 
 module.exports = async function ColumnChart(records) {
 
-    const dummy = [{ label: 'One', value: 3300 }, { label: 'Two', value: 1250 }, { label: 'Three', value: 999 }, { label: 'Four', value: 275 }, { label: 'Five', value: 2750 }, { label: 'Six', value: 2500 }, { label: 'Seven', value: 2100 }, { label: 'Eight', value: 1333 }];
+    const dummy = [
+        { label: 'One', value: 3300 },
+        { label: 'Two', value: 1250 },
+        { label: 'Three', value: 999 },
+        { label: 'Four', value: 275 },
+        { label: 'Five', value: 2750 },
+        { label: 'Six', value: 2500 },
+        { label: 'Seven', value: 2100 },
+        { label: 'Eight', value: 1333 }];
 
     const background_color = '#FFF';
     const label_color = '#dadada';
     const label_value_color = '#d3d3d3';
     const value_label_shadows = true;
     const label_value_shadow_color = '#000';
-    const v_axis_label_color = '#000';
+    const v_axis_label_color = '#74ea87';
     const h_axis_label_color = '#000';
 
     const gradient = [
@@ -148,7 +156,20 @@ module.exports = async function ColumnChart(records) {
     context.fillStyle = label_color;
     context.fillText(heading, width / 2, heading_y);
 
-    drawAxes(canvas, { axis: 'both', ticks: 'none', labels: 'v', y_axis_max_amount, step_x, step_y, data_area_width, data_area_height, margin, dbl_margin });
+    drawAxes(canvas,
+        {
+            axis: 'both',
+            ticks: 'none',
+            axis_label_color: v_axis_label_color,
+            labels: 'v',
+            y_axis_max_amount,
+            step_x,
+            step_y,
+            data_area_width,
+            data_area_height,
+            margin,
+            dbl_margin
+        });
 
     // SAVE
     const buffer = canvas.toBuffer('image/png')
