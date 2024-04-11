@@ -2,6 +2,7 @@
 const fs = require('fs');
 var express = require('express');
 const PieChart = require('../outputs/PieChart');
+const PieChart2 = require('../outputs/PieChart2');
 const ColumnChart = require('../outputs/ColumnChart');
 const LineChart = require('../outputs/LineChart');
 var router = express.Router()
@@ -22,7 +23,11 @@ router.get('/:type', async (req, res) => {
             break;
         case 'pie':
             await PieChart(req);
-            data = fs.readFileSync('./app/outputs/piechart.png');
+            data = fs.readFileSync('./app/outputs/piechart1.png');
+            break;
+        case 'pie2':
+            await PieChart2(req);
+            data = fs.readFileSync('./app/outputs/piechart2.png');
             break;
         default:
             console.log('No type supplied');
