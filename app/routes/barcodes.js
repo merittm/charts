@@ -7,6 +7,29 @@ var router = express.Router()
 
 router.get('/:string', async (req, res) => {
 
+    //console.log(req)
+    console.log(req.params)
+    console.log(req.body)
+    let data;
+    let string = req.params.string.toString();
+
+    switch (string) {
+        default:
+            await Barcodes(req);
+            data = fs.readFileSync('./app/outputs/' + string + '.png');
+            break;
+    }
+
+    res.writeHead(200, { 'Content-Type': 'image/png' });
+    res.end(data, 'binary');
+
+});
+
+router.post('/:string', async (req, res) => {
+    console.log('post')
+    //console.log(req)
+    console.log(req.params)
+    console.log(req.body)
     let data;
     let string = req.params.string.toString();
 

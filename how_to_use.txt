@@ -1,0 +1,3 @@
+http://localhost:3060/api/charts/pie
+
+http://localhost:3060/api/charts/pie2
